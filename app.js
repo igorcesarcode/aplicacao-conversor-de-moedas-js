@@ -1,7 +1,7 @@
-/*
- * O El no final do nome da cost é uma convenção
- * que significa que a esta guardando um elemento do html 
- */
+
+import {KEY} from 'env.js'
+const API_KEY = KEY;
+
 
 const currencyOneEL = document.querySelector('[data-js="currency-one"]');
 const currencyTwoEl = document.querySelector('[data-js="currency-two"]');
@@ -11,7 +11,7 @@ const valeuPrecisionEl = document.querySelector('[data-js="conversion-precision"
 const timesCurrencyOneEl = document.querySelector('[data-js="currency-one-times"]')
 
 let internalExchageRate = {}
-const getUrl = currency => `https://v6.exchangerate-api.com/v6/6c60e2d8e2aa4b7b94399c7f/latest/${currency}`
+const getUrl = currency => `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${currency}`
 
 const getErromenssage = errorType => ({
     'unsupported-code': 'A moeda não existe no nosso banco da dados.',
@@ -23,7 +23,7 @@ const getErromenssage = errorType => ({
 
 const fetchExchageRate = async url => {
     try {
-        console.log(url)
+        
         const response = await fetch(url);
         const exchageRateData = await response.json();
 
@@ -76,17 +76,17 @@ const init = async () => {
     convertedValeuEl.textContent = `BRL:${internalExchageRate.conversion_rates.BRL.toFixed(2)}`
     valeuPrecisionEl.textContent = `1 USD = ${internalExchageRate.conversion_rates.BRL} BRL`
     
-    //console.log(exchageRateData.conversion_rates.BRL);
+    
 }
 
 timesCurrencyOneEl.addEventListener('input', e => {
     convertedValeuEl.textContent = `${currencyTwoEl.value}:${(e.target.value * internalExchageRate.conversion_rates[currencyTwoEl.value]).toFixed(2)}`;
-    console.log(internalExchageRate.conversion_rates[currencyTwoEl.value])
+    
 
 })
 
 currencyTwoEl.addEventListener('input', e => {
-    console.log(currencyTwoEl.value)
+   
     const currencyTwoValue = internalExchageRate.conversion_rates[e.target.value]
     convertedValeuEl.textContent = `${currencyTwoEl.value}:${(timesCurrencyOneEl.value * currencyTwoValue).toFixed(2)}`;
     valeuPrecisionEl.textContent = `1 ${currencyOneEL.value} = ${ 1 * internalExchageRate.conversion_rates[currencyTwoEl.value] }`
