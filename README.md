@@ -65,6 +65,7 @@ Inicializar o projeto atravez do index.html
 ### Instalação local
 
 1. Pegue uma KEY gratuita no site da [https://www.exchangerate-api.com/](https://www.exchangerate-api.com/)
+
 *Não se preucupe não precisa de cartão de credito para criar uma conta
 2. Clone o repo
    sh
