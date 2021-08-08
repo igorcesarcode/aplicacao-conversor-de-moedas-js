@@ -63,10 +63,10 @@ Inicializar o projeto atravez do index.html
 
 
 ### Instalação local
+*Não se preucupe não precisa de cartão de credito para criar uma conta
 
 1. Pegue uma KEY gratuita no site da [https://www.exchangerate-api.com/](https://www.exchangerate-api.com/)
 
-*Não se preucupe não precisa de cartão de credito para criar uma conta
 2. Clone o repo
    sh
    git clone https://github.com/igorcesarcode/aplicacao-conversor-de-moedas-js.git
